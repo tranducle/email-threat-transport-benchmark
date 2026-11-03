@@ -1,4 +1,4 @@
-# Email Threat Transport Benchmark
+﻿# Email Threat Transport Benchmark
 
 Companion code, frozen experimental protocols, and verification suite for the manuscript:
 
@@ -15,7 +15,7 @@ Cross-corpus email threat detection benchmarks frequently conflate ranking discr
 ## Key Empirical Findings
 
 | Stage | Model / Block | `trec6` (`N = 14,685`) | `trec5` (`N = 46,640`) | Principal Finding |
-| :--- | :--- | :--- | :--- | :--- |
+| :- | :- | :- | :- | :- |
 | **Stage 1** | `A1_TFIDF_LR` (`tau* = 0.8367`) | `AUPRC = 0.9281`, `Recall = 0.6957`, `FPR = 0.0099` | `AUPRC = 0.9592`, `Recall = 0.6337`, `FPR = 0.0090` | Moderate ranking with non-zero recall at the shared threshold on both corpora |
 | **Stage 1** | `A2_MDISTILBERT` (`tau* = 0.9996`) | `AUPRC = 0.9661`, `Recall = 0.8553`, `FPR = 0.0099` | `AUPRC = 0.9714`, `Recall = 0.0000`, `FPR = 0.0000` | Superior ranking and Brier/ECE-15 on both sources, but severe cross-source score-scale shift collapses `trec5` recall to `0.0000` (`TP = 0 / 19,235`) at the shared threshold |
 | **Stage 2** | `U_URL_STRUCTURE` (`c = 1.0`) | `dAUPRC = +0.000066`, `dLogLoss = +0.000143` | `dAUPRC = +0.000052`, `dLogLoss = -0.000034` | Fails cross-source log-loss consistency (`dLogLoss > 0` on `trec6`) |
@@ -26,30 +26,30 @@ Cross-corpus email threat detection benchmarks frequently conflate ranking discr
 
 ```text
 email-threat-transport-benchmark/
-├── README.md                              # Study overview, findings, and quickstart
-├── DATA.md                                # MeAJOR dataset schema and preparation guide
-├── REPRODUCIBILITY.md                     # Step-by-step verification and retraining guide
-├── requirements.txt                       # Python dependencies
-├── LICENSE                                # MIT License
-├── configs/
-│   ├── semantic_anchor_protocol.json      # Frozen Stage 1 specification
-│   ├── residual_utility_protocol.json     # Frozen Stage 2 specification
-│   └── published_results_summary.json     # Complete numerical results for Tables I to III
-├── src/
-│   ├── metrics_and_thresholds.py          # Threshold selection, ECE-15, and binary metrics
-│   ├── structural_features.py             # Definitions and extraction for blocks U, D, M
-│   └── bootstrap_inference.py             # Paired class-stratified bootstrap engine
-├── experiments/
-│   ├── semantic_anchor_study.py           # Stage 1 evaluation entrypoint
-│   ├── residual_utility_study.py          # Stage 2 residual probe entrypoint
-│   └── uncertainty_analysis.py            # Stage 3 bootstrap interval entrypoint
-├── scripts/
-│   ├── prepare_meajor_corpus.py           # Verify local MeAJOR preprocessed parquet table
-│   └── verify_published_results.py        # Deterministic check of all manuscript claims
-├── tests/
-│   └── test_protocol_invariants.py        # Automated test suite
-└── docs/
-    └── PROTOCOL_NOTES.md                  # Source quarantine rules and calibration details
+â”œâ”€â”€ README.md                              # Study overview, findings, and quickstart
+â”œâ”€â”€ DATA.md                                # MeAJOR dataset schema and preparation guide
+â”œâ”€â”€ REPRODUCIBILITY.md                     # Step-by-step verification and retraining guide
+â”œâ”€â”€ requirements.txt                       # Python dependencies
+â”œâ”€â”€ LICENSE                                # MIT License
+â”œâ”€â”€ configs/
+â”‚   â”œâ”€â”€ semantic_anchor_protocol.json      # Frozen Stage 1 specification
+â”‚   â”œâ”€â”€ residual_utility_protocol.json     # Frozen Stage 2 specification
+â”‚   â””â”€â”€ published_results_summary.json     # Complete numerical results for Tables I to III
+â”œâ”€â”€ src/
+â”‚   â”œâ”€â”€ metrics_and_thresholds.py          # Threshold selection, ECE-15, and binary metrics
+â”‚   â”œâ”€â”€ structural_features.py             # Definitions and extraction for blocks U, D, M
+â”‚   â””â”€â”€ bootstrap_inference.py             # Paired class-stratified bootstrap engine
+â”œâ”€â”€ experiments/
+â”‚   â”œâ”€â”€ semantic_anchor_study.py           # Stage 1 evaluation entrypoint
+â”‚   â”œâ”€â”€ residual_utility_study.py          # Stage 2 residual probe entrypoint
+â”‚   â””â”€â”€ uncertainty_analysis.py            # Stage 3 bootstrap interval entrypoint
+â”œâ”€â”€ scripts/
+â”‚   â”œâ”€â”€ prepare_meajor_corpus.py           # Verify local MeAJOR preprocessed parquet table
+â”‚   â””â”€â”€ verify_published_results.py        # Deterministic check of all manuscript claims
+â”œâ”€â”€ tests/
+â”‚   â””â”€â”€ test_protocol_invariants.py        # Automated test suite
+â””â”€â”€ docs/
+    â””â”€â”€ PROTOCOL_NOTES.md                  # Source quarantine rules and calibration details
 ```
 
 ## Quick Verification (No Dataset Download Required)
