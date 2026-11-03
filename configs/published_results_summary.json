@@ -1,0 +1,997 @@
+{
+  "study_title": "Ranking Transportability, Common-Threshold Compatibility, and Residual Structural Utility in Email Threat Detection: A Cross-Corpus Measurement Study",
+  "corpus_summary": {
+    "trec6": {
+      "n": 14685,
+      "positives": 3503,
+      "negatives": 11182,
+      "prevalence": 0.23854273067756213
+    },
+    "trec5": {
+      "n": 46640,
+      "positives": 19235,
+      "negatives": 27405,
+      "prevalence": 0.41241423670668953
+    },
+    "pooled_development": {
+      "n": 61325,
+      "positives": 22738,
+      "negatives": 38587,
+      "prevalence": 0.3707786384019568
+    },
+    "quarantined_sources": [
+      "spaphish",
+      "trec7"
+    ]
+  },
+  "stage1_semantic_anchors": {
+    "verdict": "PASS_WITH_OPERATIONAL_CALIBRATION_WARNING",
+    "ece_definition": "15 equal-width probability bins; post-hoc diagnostic only; no selection effect",
+    "metrics": {
+      "A1_TFIDF_LR": {
+        "locked_threshold": 0.8367079295539985,
+        "by_source": {
+          "trec6": {
+            "n": 14685,
+            "positives": 3503,
+            "auprc": 0.9280610933877635,
+            "brier": 0.08472266527173154,
+            "ece15": 0.150488620214037,
+            "locked_operating_point": {
+              "threshold": 0.8367079295539985,
+              "recall": 0.6956894090779332,
+              "fpr": 0.009926667859059202,
+              "tp": 2437,
+              "fn": 1066,
+              "fp": 111,
+              "tn": 11071
+            }
+          },
+          "trec5": {
+            "n": 46640,
+            "positives": 19235,
+            "auprc": 0.9592179089298307,
+            "brier": 0.0908473420946084,
+            "ece15": 0.12560840587173258,
+            "locked_operating_point": {
+              "threshold": 0.8367079295539985,
+              "recall": 0.6336885885105277,
+              "fpr": 0.008976464148877941,
+              "tp": 12189,
+              "fn": 7046,
+              "fp": 246,
+              "tn": 27159
+            }
+          }
+        },
+        "pooled_oof": {
+          "n": 61325,
+          "positives": 22738,
+          "auprc": 0.9536002567046249,
+          "brier": 0.08938071544733654,
+          "ece15": 0.13050035887320194,
+          "locked_operating_point": {
+            "threshold": 0.8367079295539985,
+            "recall": 0.6432403905356672,
+            "fpr": 0.009251820561328944,
+            "tp": 14626,
+            "fn": 8112,
+            "fp": 357,
+            "tn": 38230
+          }
+        }
+      },
+      "A2_MDISTILBERT": {
+        "locked_threshold": 0.9996199607849122,
+        "by_source": {
+          "trec6": {
+            "n": 14685,
+            "positives": 3503,
+            "auprc": 0.966140821026359,
+            "brier": 0.04378866289943364,
+            "ece15": 0.04858592558381472,
+            "locked_operating_point": {
+              "threshold": 0.9996199607849122,
+              "recall": 0.8552669140736512,
+              "fpr": 0.009926667859059202,
+              "tp": 2996,
+              "fn": 507,
+              "fp": 111,
+              "tn": 11071
+            }
+          },
+          "trec5": {
+            "n": 46640,
+            "positives": 19235,
+            "auprc": 0.97144987699378,
+            "brier": 0.0674648818201821,
+            "ece15": 0.05819234106590103,
+            "locked_operating_point": {
+              "threshold": 0.9996199607849122,
+              "recall": 0.0,
+              "fpr": 0.0,
+              "tp": 0,
+              "fn": 19235,
+              "fp": 0,
+              "tn": 27405
+            }
+          }
+        },
+        "pooled_oof": {
+          "n": 61325,
+          "positives": 22738,
+          "auprc": 0.9609789129348701,
+          "brier": 0.061795329845437834,
+          "ece15": 0.05564129269358235,
+          "locked_operating_point": {
+            "threshold": 0.9996199607849122,
+            "recall": 0.13176180842642274,
+            "fpr": 0.002876616477051857,
+            "tp": 2996,
+            "fn": 19742,
+            "fp": 111,
+            "tn": 38476
+          }
+        }
+      }
+    },
+    "findings": [
+      "A2 multilingual DistilBERT exceeds A1 TF-IDF LR in AUPRC on both reciprocal source-held-out folds and has lower Brier/ECE15.",
+      "A1 conservative locked threshold remains below 1% empirical FPR on both development sources with non-zero recall.",
+      "A2 conservative absolute threshold satisfies the FPR constraint but collapses to zero recall on TREC5; this is a score-scale/calibration transport failure, not a rank-performance failure.",
+      "No post-outcome threshold relaxation is permitted. The zero-recall finding is preserved as evidence rather than repaired by retuning.",
+      "SpaPhish and TREC7 were not accessed during RB-G1 fitting or selection."
+    ],
+    "claim_boundary": {
+      "allowed": [
+        "Strong semantic source-held-out ranking ceiling established on TREC5/TREC6 development evidence.",
+        "A2 has stronger ranking and calibration diagnostics than A1 within the frozen RB-G1 folds."
+      ],
+      "blocked": [
+        "Transportable universal absolute threshold for A2.",
+        "Broad English phishing robustness.",
+        "Deployment-general robustness.",
+        "Residual-evidence utility or method superiority before RB-G2."
+      ]
+    }
+  },
+  "stage2_residual_utility": {
+    "status": "RB_G2_RESULTS_COMPLETE",
+    "folds": [
+      {
+        "fit_source": "trec5",
+        "validation_source": "trec6",
+        "blocks": {
+          "U_URL_STRUCTURE": {
+            "features": [
+              "url_indicator",
+              "url_count",
+              "url_count_parsed",
+              "url_length_max",
+              "url_length_avg",
+              "url_subdom_max",
+              "url_subdom_avg"
+            ],
+            "coefficient": 1.0,
+            "coefficient_selection_log_loss": {
+              "1.0": 0.06396984995970469,
+              "0.5": 0.06400565583397899,
+              "0.25": 0.06402361954998916,
+              "0.0": 0.06404162379915515
+            },
+            "baseline": {
+              "auprc": 0.966140821026359,
+              "log_loss": 0.2504396096610833,
+              "brier": 0.04378866289943364,
+              "ece15": 0.04858592558381472,
+              "recall": 0.8552669140736512,
+              "fpr": 0.009926667859059202,
+              "tp": 2996,
+              "fn": 507,
+              "fp": 111,
+              "tn": 11071,
+              "threshold": 0.9996199607849122
+            },
+            "fused": {
+              "auprc": 0.9662068212898448,
+              "log_loss": 0.25058296114939443,
+              "brier": 0.043823892602424086,
+              "ece15": 0.048650970240995135,
+              "recall": 0.8558378532686269,
+              "fpr": 0.010105526739402612,
+              "tp": 2998,
+              "fn": 505,
+              "fp": 113,
+              "tn": 11069,
+              "threshold": 0.9996199607849122
+            },
+            "delta": {
+              "auprc": 6.600026348579924e-05,
+              "log_loss": 0.00014335148831112754,
+              "brier": 3.522970299044831e-05,
+              "ece15": 6.504465718041447e-05,
+              "fpr": 0.00017885888034340977,
+              "recall": 0.0005709391949757503
+            }
+          },
+          "D_DOMAIN_SHAPE_NO_IDENTITY": {
+            "features": [
+              "sender_domain_length",
+              "receiver_domain_length",
+              "sender_receiver_domain_equal",
+              "sender_url_domain_match"
+            ],
+            "coefficient": 1.0,
+            "coefficient_selection_log_loss": {
+              "1.0": 0.06394856697384567,
+              "0.5": 0.06399480558823013,
+              "0.25": 0.06401814211926654,
+              "0.0": 0.06404162379915515
+            },
+            "baseline": {
+              "auprc": 0.966140821026359,
+              "log_loss": 0.2504396096610833,
+              "brier": 0.04378866289943364,
+              "ece15": 0.04858592558381472,
+              "recall": 0.8552669140736512,
+              "fpr": 0.009926667859059202,
+              "tp": 2996,
+              "fn": 507,
+              "fp": 111,
+              "tn": 11071,
+              "threshold": 0.9996199607849122
+            },
+            "fused": {
+              "auprc": 0.9661629208192817,
+              "log_loss": 0.25066579140797357,
+              "brier": 0.043850319654399755,
+              "ece15": 0.04869153949535914,
+              "recall": 0.8555523836711391,
+              "fpr": 0.010105526739402612,
+              "tp": 2997,
+              "fn": 506,
+              "fp": 113,
+              "tn": 11069,
+              "threshold": 0.9996199607849122
+            },
+            "delta": {
+              "auprc": 2.2099792922669614e-05,
+              "log_loss": 0.00022618174689026382,
+              "brier": 6.165675496611761e-05,
+              "ece15": 0.00010561391154442074,
+              "fpr": 0.00017885888034340977,
+              "recall": 0.00028546959748787515
+            }
+          },
+          "M_MESSAGE_STRUCTURE": {
+            "features": [
+              "text_length_chars",
+              "token_count",
+              "attachment_count",
+              "has_attachments",
+              "content_type_count",
+              "attachment_type_count"
+            ],
+            "coefficient": 1.0,
+            "coefficient_selection_log_loss": {
+              "1.0": 0.06399496207485542,
+              "0.5": 0.06401825251055028,
+              "0.25": 0.06402992804200999,
+              "0.0": 0.06404162379915515
+            },
+            "baseline": {
+              "auprc": 0.966140821026359,
+              "log_loss": 0.2504396096610833,
+              "brier": 0.04378866289943364,
+              "ece15": 0.04858592558381472,
+              "recall": 0.8552669140736512,
+              "fpr": 0.009926667859059202,
+              "tp": 2996,
+              "fn": 507,
+              "fp": 111,
+              "tn": 11071,
+              "threshold": 0.9996199607849122
+            },
+            "fused": {
+              "auprc": 0.9661826537050785,
+              "log_loss": 0.2505905806614848,
+              "brier": 0.043832911249492235,
+              "ece15": 0.04865220839200382,
+              "recall": 0.8555523836711391,
+              "fpr": 0.010105526739402612,
+              "tp": 2997,
+              "fn": 506,
+              "fp": 113,
+              "tn": 11069,
+              "threshold": 0.9996199607849122
+            },
+            "delta": {
+              "auprc": 4.1832678719488925e-05,
+              "log_loss": 0.0001509710004015119,
+              "brier": 4.42483500585969e-05,
+              "ece15": 6.628280818909982e-05,
+              "fpr": 0.00017885888034340977,
+              "recall": 0.00028546959748787515
+            }
+          }
+        }
+      },
+      {
+        "fit_source": "trec6",
+        "validation_source": "trec5",
+        "blocks": {
+          "U_URL_STRUCTURE": {
+            "features": [
+              "url_indicator",
+              "url_count",
+              "url_count_parsed",
+              "url_length_max",
+              "url_length_avg",
+              "url_subdom_max",
+              "url_subdom_avg"
+            ],
+            "coefficient": 1.0,
+            "coefficient_selection_log_loss": {
+              "1.0": 0.05661792349231043,
+              "0.5": 0.05668401096367436,
+              "0.25": 0.05671734023691922,
+              "0.0": 0.056750858531023775
+            },
+            "baseline": {
+              "auprc": 0.97144987699378,
+              "log_loss": 0.32029542368119135,
+              "brier": 0.0674648818201821,
+              "ece15": 0.05819234106590103,
+              "recall": 0.0,
+              "fpr": 0.0,
+              "tp": 0,
+              "fn": 19235,
+              "fp": 0,
+              "tn": 27405,
+              "threshold": 0.9996199607849122
+            },
+            "fused": {
+              "auprc": 0.9715020705152514,
+              "log_loss": 0.3202616624188029,
+              "brier": 0.06742467590555216,
+              "ece15": 0.05829341643645781,
+              "recall": 0.00010397712503249285,
+              "fpr": 0.0,
+              "tp": 2,
+              "fn": 19233,
+              "fp": 0,
+              "tn": 27405,
+              "threshold": 0.9996199607849122
+            },
+            "delta": {
+              "auprc": 5.219352147134426e-05,
+              "log_loss": -3.376126238846533e-05,
+              "brier": -4.020591462992884e-05,
+              "ece15": 0.00010107537055677879,
+              "fpr": 0.0,
+              "recall": 0.00010397712503249285
+            }
+          },
+          "D_DOMAIN_SHAPE_NO_IDENTITY": {
+            "features": [
+              "sender_domain_length",
+              "receiver_domain_length",
+              "sender_receiver_domain_equal",
+              "sender_url_domain_match"
+            ],
+            "coefficient": 1.0,
+            "coefficient_selection_log_loss": {
+              "1.0": 0.056737488959266016,
+              "0.5": 0.05674414849709413,
+              "0.25": 0.056747497200505516,
+              "0.0": 0.056750858531023775
+            },
+            "baseline": {
+              "auprc": 0.97144987699378,
+              "log_loss": 0.32029542368119135,
+              "brier": 0.0674648818201821,
+              "ece15": 0.05819234106590103,
+              "recall": 0.0,
+              "fpr": 0.0,
+              "tp": 0,
+              "fn": 19235,
+              "fp": 0,
+              "tn": 27405,
+              "threshold": 0.9996199607849122
+            },
+            "fused": {
+              "auprc": 0.9714446898026858,
+              "log_loss": 0.3204318105497801,
+              "brier": 0.06749247502759936,
+              "ece15": 0.05823292126299639,
+              "recall": 0.0,
+              "fpr": 0.0,
+              "tp": 0,
+              "fn": 19235,
+              "fp": 0,
+              "tn": 27405,
+              "threshold": 0.9996199607849122
+            },
+            "delta": {
+              "auprc": -5.187191094213617e-06,
+              "log_loss": 0.00013638686858874483,
+              "brier": 2.7593207417270227e-05,
+              "ece15": 4.058019709535926e-05,
+              "fpr": 0.0,
+              "recall": 0.0
+            }
+          },
+          "M_MESSAGE_STRUCTURE": {
+            "features": [
+              "text_length_chars",
+              "token_count",
+              "attachment_count",
+              "has_attachments",
+              "content_type_count",
+              "attachment_type_count"
+            ],
+            "coefficient": 1.0,
+            "coefficient_selection_log_loss": {
+              "1.0": 0.05674075369719569,
+              "0.5": 0.05674577672775184,
+              "0.25": 0.05674831028560695,
+              "0.0": 0.056750858531023775
+            },
+            "baseline": {
+              "auprc": 0.97144987699378,
+              "log_loss": 0.32029542368119135,
+              "brier": 0.0674648818201821,
+              "ece15": 0.05819234106590103,
+              "recall": 0.0,
+              "fpr": 0.0,
+              "tp": 0,
+              "fn": 19235,
+              "fp": 0,
+              "tn": 27405,
+              "threshold": 0.9996199607849122
+            },
+            "fused": {
+              "auprc": 0.9714595551873554,
+              "log_loss": 0.32040222200005797,
+              "brier": 0.06748862872486834,
+              "ece15": 0.05824786930464025,
+              "recall": 0.0,
+              "fpr": 0.0,
+              "tp": 0,
+              "fn": 19235,
+              "fp": 0,
+              "tn": 27405,
+              "threshold": 0.9996199607849122
+            },
+            "delta": {
+              "auprc": 9.678193575335392e-06,
+              "log_loss": 0.00010679831886661884,
+              "brier": 2.3746904686247627e-05,
+              "ece15": 5.552823873922197e-05,
+              "fpr": 0.0,
+              "recall": 0.0
+            }
+          }
+        }
+      }
+    ],
+    "block_decisions": {
+      "U_URL_STRUCTURE": {
+        "candidate_useful": false,
+        "fold_deltas": [
+          {
+            "auprc": 6.600026348579924e-05,
+            "log_loss": 0.00014335148831112754,
+            "brier": 3.522970299044831e-05,
+            "ece15": 6.504465718041447e-05,
+            "fpr": 0.00017885888034340977,
+            "recall": 0.0005709391949757503
+          },
+          {
+            "auprc": 5.219352147134426e-05,
+            "log_loss": -3.376126238846533e-05,
+            "brier": -4.020591462992884e-05,
+            "ece15": 0.00010107537055677879,
+            "fpr": 0.0,
+            "recall": 0.00010397712503249285
+          }
+        ]
+      },
+      "D_DOMAIN_SHAPE_NO_IDENTITY": {
+        "candidate_useful": false,
+        "fold_deltas": [
+          {
+            "auprc": 2.2099792922669614e-05,
+            "log_loss": 0.00022618174689026382,
+            "brier": 6.165675496611761e-05,
+            "ece15": 0.00010561391154442074,
+            "fpr": 0.00017885888034340977,
+            "recall": 0.00028546959748787515
+          },
+          {
+            "auprc": -5.187191094213617e-06,
+            "log_loss": 0.00013638686858874483,
+            "brier": 2.7593207417270227e-05,
+            "ece15": 4.058019709535926e-05,
+            "fpr": 0.0,
+            "recall": 0.0
+          }
+        ]
+      },
+      "M_MESSAGE_STRUCTURE": {
+        "candidate_useful": false,
+        "fold_deltas": [
+          {
+            "auprc": 4.1832678719488925e-05,
+            "log_loss": 0.0001509710004015119,
+            "brier": 4.42483500585969e-05,
+            "ece15": 6.628280818909982e-05,
+            "fpr": 0.00017885888034340977,
+            "recall": 0.00028546959748787515
+          },
+          {
+            "auprc": 9.678193575335392e-06,
+            "log_loss": 0.00010679831886661884,
+            "brier": 2.3746904686247627e-05,
+            "ece15": 5.552823873922197e-05,
+            "fpr": 0.0,
+            "recall": 0.0
+          }
+        ]
+      }
+    },
+    "spaphish_accessed": false,
+    "trec7_accessed": false
+  },
+  "stage3_bootstrap_uncertainty": {
+    "bootstrap": {
+      "type": "paired class-stratified row bootstrap within each held-out source",
+      "repetitions": 1000,
+      "seed": 20261024,
+      "interval": "percentile 95%",
+      "decision_effect": "none; post-hoc uncertainty characterization only",
+      "critical_limitation": "Rows are resampled within source because campaign/thread grouping is unavailable in the frozen evaluation interface. These intervals characterize within-source row-sampling uncertainty and do not estimate corpus-level transport uncertainty or campaign-cluster uncertainty."
+    },
+    "semantic_a2_minus_a1": {
+      "trec6": {
+        "base": {
+          "auprc": 0.9280610933877635,
+          "log_loss": 0.2986215929549824,
+          "brier": 0.08472266527173154,
+          "recall": 0.6956894090779332,
+          "fpr": 0.009926667859059202
+        },
+        "alt": {
+          "auprc": 0.966140821026359,
+          "log_loss": 0.2504396096610833,
+          "brier": 0.04378866289943364,
+          "recall": 0.8552669140736512,
+          "fpr": 0.009926667859059202
+        },
+        "delta": {
+          "auprc": {
+            "estimate": 0.03807972763859546,
+            "ci95_low": 0.03171589462903717,
+            "ci95_high": 0.044758922633327036,
+            "p_boot_le_zero": 0.0,
+            "p_boot_ge_zero": 1.0
+          },
+          "log_loss": {
+            "estimate": -0.04818198329389911,
+            "ci95_low": -0.06795791050775934,
+            "ci95_high": -0.02898162144650453,
+            "p_boot_le_zero": 1.0,
+            "p_boot_ge_zero": 0.0
+          },
+          "brier": {
+            "estimate": -0.040934002372297905,
+            "ci95_low": -0.043900420984194576,
+            "ci95_high": -0.037939269703172816,
+            "p_boot_le_zero": 1.0,
+            "p_boot_ge_zero": 0.0
+          },
+          "recall": {
+            "estimate": 0.159577504995718,
+            "ci95_low": 0.14359120753639742,
+            "ci95_high": 0.1749928632600628,
+            "p_boot_le_zero": 0.0,
+            "p_boot_ge_zero": 1.0
+          },
+          "fpr": {
+            "estimate": 0.0,
+            "ci95_low": -0.0023251654444643166,
+            "ci95_high": 0.002148542300125201,
+            "p_boot_le_zero": 0.484,
+            "p_boot_ge_zero": 0.548
+          }
+        }
+      },
+      "trec5": {
+        "base": {
+          "auprc": 0.9592179089298307,
+          "log_loss": 0.3108651770623192,
+          "brier": 0.0908473420946084,
+          "recall": 0.6336885885105277,
+          "fpr": 0.008976464148877941
+        },
+        "alt": {
+          "auprc": 0.97144987699378,
+          "log_loss": 0.32029542368119135,
+          "brier": 0.0674648818201821,
+          "recall": 0.0,
+          "fpr": 0.0
+        },
+        "delta": {
+          "auprc": {
+            "estimate": 0.012231968063949328,
+            "ci95_low": 0.010610276809058591,
+            "ci95_high": 0.013973305232045189,
+            "p_boot_le_zero": 0.0,
+            "p_boot_ge_zero": 1.0
+          },
+          "log_loss": {
+            "estimate": 0.009430246618872151,
+            "ci95_low": -0.0005514508678103351,
+            "ci95_high": 0.01905930681067151,
+            "p_boot_le_zero": 0.035,
+            "p_boot_ge_zero": 0.965
+          },
+          "brier": {
+            "estimate": -0.02338246027442631,
+            "ci95_low": -0.0251918096511773,
+            "ci95_high": -0.021575147380028414,
+            "p_boot_le_zero": 1.0,
+            "p_boot_ge_zero": 0.0
+          },
+          "recall": {
+            "estimate": -0.6336885885105277,
+            "ci95_low": -0.6402417468157006,
+            "ci95_high": -0.6266181440083182,
+            "p_boot_le_zero": 1.0,
+            "p_boot_ge_zero": 0.0
+          },
+          "fpr": {
+            "estimate": -0.008976464148877941,
+            "ci95_low": -0.010181536216018973,
+            "ci95_high": -0.007881773399014778,
+            "p_boot_le_zero": 1.0,
+            "p_boot_ge_zero": 0.0
+          }
+        }
+      }
+    },
+    "residual_fused_minus_a2": {
+      "trec6": {
+        "U_URL_STRUCTURE": {
+          "base": {
+            "auprc": 0.966140821026359,
+            "log_loss": 0.2504396096610833,
+            "brier": 0.04378866289943364,
+            "recall": 0.8552669140736512,
+            "fpr": 0.009926667859059202
+          },
+          "alt": {
+            "auprc": 0.9662068212898448,
+            "log_loss": 0.25058296114939443,
+            "brier": 0.043823892602424086,
+            "recall": 0.8558378532686269,
+            "fpr": 0.010105526739402612
+          },
+          "delta": {
+            "auprc": {
+              "estimate": 6.600026348579924e-05,
+              "ci95_low": 3.7187795504728396e-05,
+              "ci95_high": 0.00010368480987865136,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "log_loss": {
+              "estimate": 0.00014335148831112754,
+              "ci95_low": 0.00010897403482625495,
+              "ci95_high": 0.00017870159413519297,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "brier": {
+              "estimate": 3.522970299044831e-05,
+              "ci95_low": 2.8199588854660104e-05,
+              "ci95_high": 4.189959321055682e-05,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "recall": {
+              "estimate": 0.0005709391949757503,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0014273479874393757,
+              "p_boot_le_zero": 0.137,
+              "p_boot_ge_zero": 1.0
+            },
+            "fpr": {
+              "estimate": 0.00017885888034340977,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0004471472008585227,
+              "p_boot_le_zero": 0.143,
+              "p_boot_ge_zero": 1.0
+            }
+          }
+        },
+        "D_DOMAIN_SHAPE_NO_IDENTITY": {
+          "base": {
+            "auprc": 0.966140821026359,
+            "log_loss": 0.2504396096610833,
+            "brier": 0.04378866289943364,
+            "recall": 0.8552669140736512,
+            "fpr": 0.009926667859059202
+          },
+          "alt": {
+            "auprc": 0.9661629208192817,
+            "log_loss": 0.25066579140797357,
+            "brier": 0.043850319654399755,
+            "recall": 0.8555523836711391,
+            "fpr": 0.010105526739402612
+          },
+          "delta": {
+            "auprc": {
+              "estimate": 2.2099792922669614e-05,
+              "ci95_low": -3.5840436788558973e-06,
+              "ci95_high": 5.0671471996568955e-05,
+              "p_boot_le_zero": 0.054,
+              "p_boot_ge_zero": 0.946
+            },
+            "log_loss": {
+              "estimate": 0.00022618174689026382,
+              "ci95_low": 0.00017872758784675397,
+              "ci95_high": 0.00027108325687588626,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "brier": {
+              "estimate": 6.165675496611761e-05,
+              "ci95_low": 5.115545051654277e-05,
+              "ci95_high": 7.263274708255891e-05,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "recall": {
+              "estimate": 0.00028546959748787515,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0008564087924636254,
+              "p_boot_le_zero": 0.363,
+              "p_boot_ge_zero": 1.0
+            },
+            "fpr": {
+              "estimate": 0.00017885888034340977,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0005365766410302258,
+              "p_boot_le_zero": 0.134,
+              "p_boot_ge_zero": 1.0
+            }
+          }
+        },
+        "M_MESSAGE_STRUCTURE": {
+          "base": {
+            "auprc": 0.966140821026359,
+            "log_loss": 0.2504396096610833,
+            "brier": 0.04378866289943364,
+            "recall": 0.8552669140736512,
+            "fpr": 0.009926667859059202
+          },
+          "alt": {
+            "auprc": 0.9661826537050785,
+            "log_loss": 0.2505905806614848,
+            "brier": 0.043832911249492235,
+            "recall": 0.8555523836711391,
+            "fpr": 0.010105526739402612
+          },
+          "delta": {
+            "auprc": {
+              "estimate": 4.1832678719488925e-05,
+              "ci95_low": 2.0579504127304914e-05,
+              "ci95_high": 6.354594858804518e-05,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "log_loss": {
+              "estimate": 0.0001509710004015119,
+              "ci95_low": 0.00012879065467565065,
+              "ci95_high": 0.00017578104235923127,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "brier": {
+              "estimate": 4.42483500585969e-05,
+              "ci95_low": 3.9089159082655867e-05,
+              "ci95_high": 4.9064116153959074e-05,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "recall": {
+              "estimate": 0.00028546959748787515,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0011418783899513896,
+              "p_boot_le_zero": 0.357,
+              "p_boot_ge_zero": 1.0
+            },
+            "fpr": {
+              "estimate": 0.00017885888034340977,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0004471472008585227,
+              "p_boot_le_zero": 0.131,
+              "p_boot_ge_zero": 1.0
+            }
+          }
+        }
+      },
+      "trec5": {
+        "U_URL_STRUCTURE": {
+          "base": {
+            "auprc": 0.97144987699378,
+            "log_loss": 0.32029542368119135,
+            "brier": 0.0674648818201821,
+            "recall": 0.0,
+            "fpr": 0.0
+          },
+          "alt": {
+            "auprc": 0.9715020705152514,
+            "log_loss": 0.3202616624188029,
+            "brier": 0.06742467590555216,
+            "recall": 0.00010397712503249285,
+            "fpr": 0.0
+          },
+          "delta": {
+            "auprc": {
+              "estimate": 5.219352147134426e-05,
+              "ci95_low": 2.920522765695322e-06,
+              "ci95_high": 9.647019069762841e-05,
+              "p_boot_le_zero": 0.021,
+              "p_boot_ge_zero": 0.979
+            },
+            "log_loss": {
+              "estimate": -3.376126238846533e-05,
+              "ci95_low": -0.00012113738779800931,
+              "ci95_high": 5.502719245029652e-05,
+              "p_boot_le_zero": 0.785,
+              "p_boot_ge_zero": 0.215
+            },
+            "brier": {
+              "estimate": -4.020591462992884e-05,
+              "ci95_low": -5.8738403293608773e-05,
+              "ci95_high": -2.0233390855428637e-05,
+              "p_boot_le_zero": 1.0,
+              "p_boot_ge_zero": 0.0
+            },
+            "recall": {
+              "estimate": 0.00010397712503249285,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0002599428125812321,
+              "p_boot_le_zero": 0.137,
+              "p_boot_ge_zero": 1.0
+            },
+            "fpr": {
+              "estimate": 0.0,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0,
+              "p_boot_le_zero": 1.0,
+              "p_boot_ge_zero": 1.0
+            }
+          }
+        },
+        "D_DOMAIN_SHAPE_NO_IDENTITY": {
+          "base": {
+            "auprc": 0.97144987699378,
+            "log_loss": 0.32029542368119135,
+            "brier": 0.0674648818201821,
+            "recall": 0.0,
+            "fpr": 0.0
+          },
+          "alt": {
+            "auprc": 0.9714446898026858,
+            "log_loss": 0.3204318105497801,
+            "brier": 0.06749247502759936,
+            "recall": 0.0,
+            "fpr": 0.0
+          },
+          "delta": {
+            "auprc": {
+              "estimate": -5.187191094213617e-06,
+              "ci95_low": -1.0773848480821745e-05,
+              "ci95_high": 7.246069595706609e-07,
+              "p_boot_le_zero": 0.949,
+              "p_boot_ge_zero": 0.051
+            },
+            "log_loss": {
+              "estimate": 0.00013638686858874483,
+              "ci95_low": 0.00012145197178702605,
+              "ci95_high": 0.0001500667890307991,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "brier": {
+              "estimate": 2.7593207417270227e-05,
+              "ci95_low": 2.421706344972463e-05,
+              "ci95_high": 3.093332375109295e-05,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "recall": {
+              "estimate": 0.0,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0,
+              "p_boot_le_zero": 1.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "fpr": {
+              "estimate": 0.0,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0,
+              "p_boot_le_zero": 1.0,
+              "p_boot_ge_zero": 1.0
+            }
+          }
+        },
+        "M_MESSAGE_STRUCTURE": {
+          "base": {
+            "auprc": 0.97144987699378,
+            "log_loss": 0.32029542368119135,
+            "brier": 0.0674648818201821,
+            "recall": 0.0,
+            "fpr": 0.0
+          },
+          "alt": {
+            "auprc": 0.9714595551873554,
+            "log_loss": 0.32040222200005797,
+            "brier": 0.06748862872486834,
+            "recall": 0.0,
+            "fpr": 0.0
+          },
+          "delta": {
+            "auprc": {
+              "estimate": 9.678193575335392e-06,
+              "ci95_low": 7.360862816929714e-06,
+              "ci95_high": 1.2129442913583199e-05,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "log_loss": {
+              "estimate": 0.00010679831886661884,
+              "ci95_low": 9.571925609931226e-05,
+              "ci95_high": 0.00011856039313585254,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "brier": {
+              "estimate": 2.3746904686247627e-05,
+              "ci95_low": 2.1136691502002258e-05,
+              "ci95_high": 2.6306722873865525e-05,
+              "p_boot_le_zero": 0.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "recall": {
+              "estimate": 0.0,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0,
+              "p_boot_le_zero": 1.0,
+              "p_boot_ge_zero": 1.0
+            },
+            "fpr": {
+              "estimate": 0.0,
+              "ci95_low": 0.0,
+              "ci95_high": 0.0,
+              "p_boot_le_zero": 1.0,
+              "p_boot_ge_zero": 1.0
+            }
+          }
+        }
+      }
+    },
+    "reconstruction": {
+      "rule": "Re-fit only the already-frozen final StandardScaler+Ridge probe on all cross-fitted training rows using the coefficient already stored in RB-G2 results; no coefficient/model/threshold selection is repeated.",
+      "stored_metric_match_tolerance": 1e-12,
+      "all_matches": true
+    },
+    "source_isolation": {
+      "spaphish_accessed": false,
+      "trec7_accessed": false
+    }
+  }
+}

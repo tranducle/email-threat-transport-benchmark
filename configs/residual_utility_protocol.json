@@ -1,0 +1,85 @@
+{
+  "protocol_id": "RESIDUAL_STRUCTURAL_UTILITY_PROTOCOL",
+  "date": "2026-10-24",
+  "status": "FROZEN_SPEC_NO_RB_G2_OUTCOMES",
+  "semantic_anchor": {
+    "primary": "A2_MDISTILBERT",
+    "outer_validation_scores": "reuse frozen Stage 1 A2 ensemble_validation.parquet only",
+    "training_score_rule": "within each outer fit source, generate semantic scores by 2-fold stratified cross-fitting; fit all three frozen A2 seeds per inner fold using unchanged RB-G1 hyperparameters; no row is scored by a semantic model trained on that row",
+    "inner_folds": 2,
+    "inner_split_seed": 20261024
+  },
+  "feature_blocks": {
+    "U_URL_STRUCTURE": [
+      "url_indicator",
+      "url_count",
+      "url_count_parsed",
+      "url_length_max",
+      "url_length_avg",
+      "url_subdom_max",
+      "url_subdom_avg"
+    ],
+    "D_DOMAIN_SHAPE_NO_IDENTITY": [
+      "sender_domain_length",
+      "receiver_domain_length",
+      "sender_receiver_domain_equal",
+      "sender_url_domain_match"
+    ],
+    "M_MESSAGE_STRUCTURE": [
+      "text_length_chars",
+      "token_count",
+      "attachment_count",
+      "has_attachments",
+      "content_type_count",
+      "attachment_type_count"
+    ]
+  },
+  "feature_policy": "Only numeric shape/count derivatives are allowed. Raw sender, receiver, domain strings, URL strings, source ID, language ID, and raw text are prohibited as residual-probe features.",
+  "probe": {
+    "type": "Ridge residual regressor",
+    "target": "y - semantic_probability",
+    "standardization": "StandardScaler fit on probe-fit subset only",
+    "ridge_alpha": 1.0,
+    "coefficient_grid": [
+      0.0,
+      0.25,
+      0.5,
+      1.0
+    ],
+    "coefficient_selection": "fixed stratified 80/20 split of outer fit source; choose lowest log-loss on selection subset, ties choose smaller coefficient",
+    "selection_seed": 20261025,
+    "final_probe_rule": "refit scaler and ridge on all cross-fitted rows from outer fit source using selected coefficient"
+  },
+  "evaluation": {
+    "outer_folds": [
+      {
+        "fit_source": "trec5",
+        "validation_source": "trec6"
+      },
+      {
+        "fit_source": "trec6",
+        "validation_source": "trec5"
+      }
+    ],
+    "metrics": [
+      "AUPRC",
+      "log_loss",
+      "Brier",
+      "ECE15",
+      "recall_at_frozen_RB_G1_threshold",
+      "FPR_at_frozen_RB_G1_threshold"
+    ],
+    "candidate_useful_rule": "positive delta AUPRC and negative delta log-loss in both outer source-held-out folds, with no FPR increase > 0.002 at the frozen RB-G1 A2 threshold on either source",
+    "kill_rule": "kill a block if direction is inconsistent across outer sources, if log-loss worsens on either source, or if FPR harm exceeds 0.002 on either source"
+  },
+  "hard_prohibitions": [
+    "No SpaPhish access",
+    "No TREC7 access",
+    "No RB-G1 threshold retuning",
+    "No raw identity features",
+    "No source ID feature",
+    "No HPO beyond the frozen coefficient grid",
+    "No CGCF-KAN or graph model training",
+    "No confirmatory claim from RB-G2 development outcomes"
+  ]
+}

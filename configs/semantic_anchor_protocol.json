@@ -1,0 +1,93 @@
+{
+  "protocol_id": "SEMANTIC_ANCHOR_PROTOCOL",
+  "date": "2026-10-23",
+  "status": "FROZEN_SPEC_NO_FIT",
+  "scientific_question": "Establish a strong semantic-only ceiling under source shift before testing auxiliary residual evidence.",
+  "development_data": {
+    "corpus": "MeAJOR",
+    "local_relative_path": "data/meajor_preprocessed.parquet",
+    "source_folds": [
+      {
+        "fit_source": "trec5",
+        "validation_source": "trec6"
+      },
+      {
+        "fit_source": "trec6",
+        "validation_source": "trec5"
+      }
+    ],
+    "threshold_selection": "Compute one threshold on each source-held-out validation fold that maximizes recall subject to empirical FPR <= 0.01. Lock the final operational threshold as the maximum of the two fold thresholds so the declared endpoint is conservative across both development sources.",
+    "legacy_trec7_role": "RETROSPECTIVE_DIAGNOSTIC_ONLY_NO_SELECTION",
+    "spaphish_role": "SEALED_CROSS_LANGUAGE_SOURCE_SHIFT_CONFIRMATORY_STRESS_NO_ACCESS_DURING_RB_G1_FIT_OR_SELECTION",
+    "oof_score_rule": "For A1 use the fold model probability directly. For A2 average phishing probabilities across the three frozen seeds within each source-held-out fold. Concatenate held-out-source predictions for pooled AUPRC and calibration summaries, but do not use pooled FPR to relax the source-wise threshold rule.",
+    "final_fit_rule": "After all architecture and threshold choices are frozen, refit A1 once and A2 once per frozen seed on the union of TREC5 and TREC6 using unchanged hyperparameters. A2 final semantic score is the arithmetic mean of the three seed probabilities. Apply the previously locked conservative source-wise operational threshold without retuning."
+  },
+  "anchors": [
+    {
+      "id": "A1_TFIDF_LR",
+      "family": "sparse_linear",
+      "input": "existing MeAJOR text_clean field only",
+      "vectorizer": {
+        "type": "TfidfVectorizer",
+        "max_features": 20000,
+        "min_df": 2,
+        "ngram_range": [
+          1,
+          2
+        ],
+        "lowercase": true,
+        "strip_accents": "unicode",
+        "sublinear_tf": true
+      },
+      "classifier": {
+        "type": "LogisticRegression",
+        "C": 1.0,
+        "class_weight": "balanced",
+        "solver": "liblinear",
+        "max_iter": 1000
+      },
+      "provenance": "parameters inherited from semantic_only_e1.py before new outcomes",
+      "selection": "no architecture or hyperparameter search"
+    },
+    {
+      "id": "A2_MDISTILBERT",
+      "family": "compact_multilingual_transformer",
+      "model_name": "distilbert-base-multilingual-cased",
+      "model_availability_verified_http": 200,
+      "input": "same existing MeAJOR text_clean field as A1",
+      "max_length": 192,
+      "epochs": 3,
+      "batch_size": 16,
+      "learning_rate": 2e-05,
+      "optimizer": "AdamW",
+      "warmup_fraction": 0.1,
+      "gradient_clip_norm": 1.0,
+      "seeds": [
+        20260503,
+        20260504,
+        20260505
+      ],
+      "checkpoint_selection": "Fixed terminal epoch 3 checkpoint for every seed and fold. No early stopping and no epoch selection using validation, TREC7, or SpaPhish labels.",
+      "provenance": "old DistilBERT pipeline supports arbitrary model_name, but old script is NOT authorized because it loads test in the same run",
+      "selection": "model family frozen before new outcomes because confirmatory source is Spanish and cross-language stress requires a multilingual semantic anchor",
+      "final_score": "arithmetic mean of the three frozen-seed phishing probabilities"
+    }
+  ],
+  "primary_metrics": [
+    "AUPRC",
+    "recall_at_locked_1pct_FPR"
+  ],
+  "secondary_metrics": [
+    "Brier",
+    "ECE"
+  ],
+  "hard_prohibitions": [
+    "No SpaPhish read during model fitting or selection",
+    "No TREC7-based hyperparameter or threshold selection",
+    "No residual evidence features",
+    "No source ID feature",
+    "No HPO",
+    "No architecture substitution after outcomes",
+    "No use of legacy DistilBERT results as new RB-G1 evidence"
+  ]
+}
