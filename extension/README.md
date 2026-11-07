@@ -21,7 +21,7 @@ analyses added in the extended version of the study:
 The folder mirrors the project workspace, so the scripts' relative paths resolve unchanged:
 
 ```text
-ijis_extension/
+extension/
   ijis_e1e2_20261106/
     code/          e2_ceas08.py, e1_label_budget.py, e1_tables.py, verify_e1e2.py, job_wrapper.py
     data/          ceas08_confirmation.parquet (label-only), ceas08_confirmation_split.csv
@@ -58,7 +58,7 @@ weights are not redistributed. Absolute workstation paths in receipts were rewri
 
 ```bash
 pip install numpy pandas pyarrow scipy scikit-learn joblib
-cd ijis_extension
+cd extension
 python ijis_e1e2_20261106/code/e1_label_budget.py    # E1, CPU only, under a minute on one core
 python ijis_e1e2_20261106/code/e1_tables.py          # E1 tables from the long results file
 python ijis_e1e2_20261106/code/e2_ceas08.py analyze  # E2 metrics and paired bootstrap from frozen scores
