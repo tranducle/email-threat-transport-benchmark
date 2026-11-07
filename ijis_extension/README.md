@@ -3,7 +3,7 @@
 This folder holds the code, frozen score files, label tables, and result tables for the two
 analyses added in the extended version of the study:
 
-> **A Good Ranking Is Not a Transferable Cutoff: Source Dependence of False-Positive Control in Email Filters**
+> **A Good Ranking Is Not a Transferable Cutoff: False-Positive Control of Email Filters Across Sources and Retraining**
 
 * **E2, CEAS-08 external scoring.** The frozen A1 (TF-IDF + logistic regression) and A2
   (3-seed multilingual DistilBERT ensemble) models from the three training routes (`final`,
@@ -35,6 +35,10 @@ ijis_extension/
   top_q1_external_confirmation_20261105/
     data/          spaphish_confirmation.parquet (label-only)
     predictions/   spaphish_frozen_scores.parquet
+  ijis_r2_review_analyses_20261106/
+    code/r2_analyses.py   shared versus same-model cutoffs, score ceilings, mean realized FPR,
+                          full-label recall reference, analytic label requirement
+    results/              r2_results.json and the two long tables it summarizes
   LABEL_ONLY_DERIVATION.json   source hash, kept columns, and row count of each label-only table
   SHA256SUMS.txt               SHA-256 of every file in this folder
 ```
@@ -58,7 +62,11 @@ cd ijis_extension
 python ijis_e1e2_20261106/code/e1_label_budget.py    # E1, CPU only, under a minute on one core
 python ijis_e1e2_20261106/code/e1_tables.py          # E1 tables from the long results file
 python ijis_e1e2_20261106/code/e2_ceas08.py analyze  # E2 metrics and paired bootstrap from frozen scores
+python ijis_r2_review_analyses_20261106/code/r2_analyses.py  # cutoff policies and label rule (needs e1_draws.parquet)
 ```
+
+`r2_analyses.py` reads the same score and label files plus the per-draw file `e1_draws.parquet`
+that `e1_label_budget.py` writes, so run E1 first.
 
 E1 reads only the score files and the `row_id`, `label`, and contamination columns of the label
 tables, all of which are included. The E2 `analyze` action reads the frozen scores, the CEAS-08

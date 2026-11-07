@@ -1,0 +1,116 @@
+{
+ "tally": {
+  "0.005": {
+   "common_all12": {
+    "cells": 12,
+    "exceed": 8,
+    "flag_nothing": 2,
+    "hold": 2
+   },
+   "own_where_defined_else_borrowed": {
+    "cells": 12,
+    "exceed": 10,
+    "flag_nothing": 0,
+    "hold": 2
+   },
+   "own_route_cells_only": {
+    "cells": 8,
+    "exceed": 7,
+    "flag_nothing": 0,
+    "hold": 1
+   }
+  },
+  "0.01": {
+   "common_all12": {
+    "cells": 12,
+    "exceed": 9,
+    "flag_nothing": 2,
+    "hold": 1
+   },
+   "own_where_defined_else_borrowed": {
+    "cells": 12,
+    "exceed": 10,
+    "flag_nothing": 0,
+    "hold": 2
+   },
+   "own_route_cells_only": {
+    "cells": 8,
+    "exceed": 7,
+    "flag_nothing": 0,
+    "hold": 1
+   }
+  },
+  "0.02": {
+   "common_all12": {
+    "cells": 12,
+    "exceed": 9,
+    "flag_nothing": 0,
+    "hold": 3
+   },
+   "own_where_defined_else_borrowed": {
+    "cells": 12,
+    "exceed": 9,
+    "flag_nothing": 0,
+    "hold": 3
+   },
+   "own_route_cells_only": {
+    "cells": 8,
+    "exceed": 6,
+    "flag_nothing": 0,
+    "hold": 2
+   }
+  }
+ },
+ "dev_check": {
+  "a1": true,
+  "a2": true
+ },
+ "common_set_by_route": {
+  "a1": {
+   "0.005": "fit_trec5",
+   "0.01": "fit_trec5",
+   "0.02": "fit_trec6"
+  },
+  "a2": {
+   "0.005": "fit_trec5",
+   "0.01": "fit_trec5",
+   "0.02": "fit_trec6"
+  }
+ },
+ "mean_fpr": {
+  "P0": {
+   "mean_fpr_min": 0.0,
+   "mean_fpr_max": 0.819028344801283,
+   "viol_min": 0.0,
+   "viol_max": 1.0
+  },
+  "P1": {
+   "mean_fpr_min": 0.01022285527240962,
+   "mean_fpr_max": 0.044935545315701084,
+   "viol_min": 0.419,
+   "viol_max": 0.789
+  },
+  "P2": {
+   "mean_fpr_min": 0.0021998837061132483,
+   "mean_fpr_max": 0.0059235263764526236,
+   "viol_min": 0.007,
+   "viol_max": 0.17
+  },
+  "P3": {
+   "mean_fpr_min": 0.0,
+   "mean_fpr_max": 0.2812158360064342,
+   "viol_min": 0.0,
+   "viol_max": 1.0
+  },
+  "P4": {
+   "mean_fpr_min": 0.0,
+   "mean_fpr_max": 0.819028344801283,
+   "viol_min": 0.0,
+   "viol_max": 1.0
+  },
+  "P1_k_ge_500": {
+   "mean_fpr_min": 0.01022285527240962,
+   "mean_fpr_max": 0.01346353521869988
+  }
+ }
+}
