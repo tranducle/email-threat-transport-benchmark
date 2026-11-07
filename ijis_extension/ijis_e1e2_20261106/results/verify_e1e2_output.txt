@@ -1,0 +1,96 @@
+PASS ceas08 source sha256
+PASS adapter sha256 (freeze)
+PASS split sha256 (freeze)
+PASS adapter sha256 (scoring)
+PASS predictions sha256 (scoring)
+PASS predictions sha256 (results)
+PASS freeze frozen before scoring  2026-11-06 15:41:41 <= 2026-11-06 15:42:15
+PASS final A1 bundle sha256
+PASS final A2 tree sha256
+PASS fit_trec5 A1 bundle sha256
+PASS fit_trec5 A2 tree sha256
+PASS fit_trec6 A1 bundle sha256
+PASS fit_trec6 A2 tree sha256
+PASS runtime compatibility PASS
+PASS contamination removed count
+PASS prediction rows == evaluation rows  38920
+PASS prediction row order
+PASS final a1 scores finite in [0,1]
+PASS E2 final a1 auroc  0.964030 vs 0.964030
+PASS E2 final a1 average_precision  0.957104 vs 0.957104
+PASS E2 final a1 log_loss  0.272307 vs 0.272307
+PASS E2 final a1 brier  0.078912 vs 0.078912
+PASS E2 final a1 ece15  0.109309 vs 0.109309
+PASS E2 final a1 fpr  0.021628 vs 0.021628
+PASS E2 final a1 recall  0.492710 vs 0.492710
+PASS final a2 scores finite in [0,1]
+PASS E2 final a2 auroc  0.935600 vs 0.935600
+PASS E2 final a2 average_precision  0.953309 vs 0.953309
+PASS E2 final a2 log_loss  1.038297 vs 1.038297
+PASS E2 final a2 brier  0.150832 vs 0.150832
+PASS E2 final a2 ece15  0.149464 vs 0.149464
+PASS E2 final a2 fpr  0.005972 vs 0.005972
+PASS E2 final a2 recall  0.555781 vs 0.555781
+PASS fit_trec5 a1 scores finite in [0,1]
+PASS E2 fit_trec5 a1 auroc  0.940605 vs 0.940605
+PASS E2 fit_trec5 a1 average_precision  0.935006 vs 0.935006
+PASS E2 fit_trec5 a1 log_loss  0.352037 vs 0.352037
+PASS E2 fit_trec5 a1 brier  0.101875 vs 0.101875
+PASS E2 fit_trec5 a1 ece15  0.118942 vs 0.118942
+PASS E2 fit_trec5 a1 fpr  0.024991 vs 0.024991
+PASS E2 fit_trec5 a1 recall  0.442097 vs 0.442097
+PASS fit_trec5 a2 scores finite in [0,1]
+PASS E2 fit_trec5 a2 auroc  0.872125 vs 0.872125
+PASS E2 fit_trec5 a2 average_precision  0.917061 vs 0.917061
+PASS E2 fit_trec5 a2 log_loss  1.088250 vs 1.088250
+PASS E2 fit_trec5 a2 brier  0.172783 vs 0.172783
+PASS E2 fit_trec5 a2 ece15  0.155545 vs 0.155545
+PASS E2 fit_trec5 a2 fpr  0.019251 vs 0.019251
+PASS E2 fit_trec5 a2 recall  0.566624 vs 0.566624
+PASS fit_trec6 a1 scores finite in [0,1]
+PASS E2 fit_trec6 a1 auroc  0.971336 vs 0.971336
+PASS E2 fit_trec6 a1 average_precision  0.966284 vs 0.966284
+PASS E2 fit_trec6 a1 log_loss  0.273643 vs 0.273643
+PASS E2 fit_trec6 a1 brier  0.073786 vs 0.073786
+PASS E2 fit_trec6 a1 ece15  0.137535 vs 0.137535
+PASS E2 fit_trec6 a1 fpr  0.010437 vs 0.010437
+PASS E2 fit_trec6 a1 recall  0.313925 vs 0.313925
+PASS fit_trec6 a2 scores finite in [0,1]
+PASS E2 fit_trec6 a2 auroc  0.981278 vs 0.981278
+PASS E2 fit_trec6 a2 average_precision  0.981266 vs 0.981266
+PASS E2 fit_trec6 a2 log_loss  0.199597 vs 0.199597
+PASS E2 fit_trec6 a2 brier  0.043119 vs 0.043119
+PASS E2 fit_trec6 a2 ece15  0.032858 vs 0.032858
+PASS E2 fit_trec6 a2 fpr  0.000000 vs 0.000000
+PASS E2 fit_trec6 a2 recall  0.000000 vs 0.000000
+PASS e1_results_long.csv sha256
+PASS e1_draws.parquet sha256
+PASS E1 input ceas08_adapter sha256
+PASS E1 input ceas08_predictions sha256
+PASS E1 input dev_trec5_a1 sha256
+PASS E1 input dev_trec5_a2 sha256
+PASS E1 input dev_trec6_a1 sha256
+PASS E1 input dev_trec6_a2 sha256
+PASS E1 input spaphish_adapter sha256
+PASS E1 input spaphish_predictions sha256
+PASS ceas08 k grid leaves >= 395
+PASS spaphish k grid leaves >= 395
+PASS trec5 k grid leaves >= 395
+PASS trec6 k grid leaves >= 395
+PASS E1 cell count  1350 vs 1350
+PASS E1 draws per cell
+PASS E1 cells recomputed from draws: budget_violation_prob
+PASS E1 cells recomputed from draws: fpr_median
+PASS E1 cells recomputed from draws: fpr_p05
+PASS E1 cells recomputed from draws: fpr_p95
+PASS E1 cells recomputed from draws: recall_median
+PASS E1 cells recomputed from draws: recall_p05
+PASS E1 cells recomputed from draws: recall_p95
+PASS E1 cells recomputed from draws: no_cutoff_share
+PASS E1 regenerated draws (P0, P1, P2, first 25 draws per target and k)  20250 checks, 0 mismatches
+PASS P0 A1 cutoff at 0.01 equals locked threshold
+PASS P0 A2 cutoff at 0.01 equals locked threshold
+{
+  "status": "PASS",
+  "failed": []
+}

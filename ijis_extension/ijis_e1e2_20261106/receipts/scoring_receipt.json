@@ -1,0 +1,143 @@
+{
+  "adapter_sha256": "e82859712079f60fc13e9ba57c932451d1333b53cac553e6ae0b9ced1d905a6b",
+  "finished_local": "2026-11-06 15:57:44",
+  "finished_unix": 1794002264.9169812,
+  "freeze_sha256": "2413e70ddd5e3d15bb5c654435dc9fc6b4cb9c5d873dc955db7925e464c9fca7",
+  "predictions_path": "<workspace>/5_Experiments_Simulations/ijis_e1e2_20261106/predictions/ceas08_frozen_scores.parquet",
+  "predictions_sha256": "73179edafa3192a294059770607ad984aa9e7d26da01474cda2a7bea0ec6d405",
+  "rb_module_sha256": "7240d6a8ef6fef7e623e9cb64ce4e45f899de54e66b5a0b911270f7113014e18",
+  "routes": {
+    "final": {
+      "a1_path": "<workspace>/5_Experiments_Simulations/rebaseline_rb_g1/runs/RB_G1_20261023_V1/final_models/A1_TFIDF_LR/tfidf_lr.joblib",
+      "a1_seconds": 11.3643217086792,
+      "a1_sha256": "5ed5ea45beb49f71621242cf9377be3f774a7832481541e61debe6660ba9bc28",
+      "a2_dtype": "float32",
+      "a2_root": "<workspace>/5_Experiments_Simulations/rebaseline_rb_g1/runs/RB_G1_20261023_V1/final_models/A2_MDISTILBERT",
+      "a2_seconds": 295.62176990509033,
+      "a2_tree": {
+        "files": {
+          "seed_20260503/config.json": "f1bbd980124a0fc2c5a9af9ac18970b162169c1d401ca5b0e6224b201ac259ef",
+          "seed_20260503/model.safetensors": "90b899db2c44a1f8a5c67e26cf71ad894018efa7451f4ef69f793c35e720e669",
+          "seed_20260503/special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+          "seed_20260503/tokenizer.json": "3c4ee679d4ab7ec61f5b6804d52fc523ed6cf252365c8636b178e1e71522be0a",
+          "seed_20260503/tokenizer_config.json": "525f6e8d34ebdd9a6b6de867afc5c070169ddec58e5058e93134e18ff2e9ecfa",
+          "seed_20260503/vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c",
+          "seed_20260504/config.json": "f1bbd980124a0fc2c5a9af9ac18970b162169c1d401ca5b0e6224b201ac259ef",
+          "seed_20260504/model.safetensors": "57d98df1a2d38f7671c949f6357850fc55c58d846b422664d5ef90803d34456a",
+          "seed_20260504/special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+          "seed_20260504/tokenizer.json": "3c4ee679d4ab7ec61f5b6804d52fc523ed6cf252365c8636b178e1e71522be0a",
+          "seed_20260504/tokenizer_config.json": "525f6e8d34ebdd9a6b6de867afc5c070169ddec58e5058e93134e18ff2e9ecfa",
+          "seed_20260504/vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c",
+          "seed_20260505/config.json": "f1bbd980124a0fc2c5a9af9ac18970b162169c1d401ca5b0e6224b201ac259ef",
+          "seed_20260505/model.safetensors": "4b7c4237f52385e6ee70dec015dfc278d4e00b5e3122a09da657c3bb1c5ba3ff",
+          "seed_20260505/special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+          "seed_20260505/tokenizer.json": "3c4ee679d4ab7ec61f5b6804d52fc523ed6cf252365c8636b178e1e71522be0a",
+          "seed_20260505/tokenizer_config.json": "525f6e8d34ebdd9a6b6de867afc5c070169ddec58e5058e93134e18ff2e9ecfa",
+          "seed_20260505/vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+        },
+        "tree_sha256": "177af187306ef2f715223905dcfb307f23ac915ed8f0277185e00bf830fda538"
+      }
+    },
+    "fit_trec5": {
+      "a1_path": "<workspace>/5_Experiments_Simulations/rebaseline_rb_g1/runs/RB_G1_20261023_V1/fit_trec5__val_trec6/A1_TFIDF_LR/tfidf_lr.joblib",
+      "a1_seconds": 10.812114715576172,
+      "a1_sha256": "0a4de04d854f2773c9801bcae54864e304d45ed5a8902c05c4675885aa9cd1ae",
+      "a2_dtype": "float32",
+      "a2_root": "<workspace>/5_Experiments_Simulations/rebaseline_rb_g1/runs/RB_G1_20261023_V1/fit_trec5__val_trec6/A2_MDISTILBERT",
+      "a2_seconds": 287.52410364151,
+      "a2_tree": {
+        "files": {
+          "ensemble_validation.parquet": "aaf1a0679e50f0a94a01ebbfb6c66b854b395f9a3b2d52cc6bfde178e01a37ff",
+          "seed_20260503/config.json": "f1bbd980124a0fc2c5a9af9ac18970b162169c1d401ca5b0e6224b201ac259ef",
+          "seed_20260503/model.safetensors": "60b422c7df2c3a0dcbbc5ece5a72ef89937fb27072d9f4dbfb75e0d3f87787cd",
+          "seed_20260503/special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+          "seed_20260503/tokenizer.json": "3c4ee679d4ab7ec61f5b6804d52fc523ed6cf252365c8636b178e1e71522be0a",
+          "seed_20260503/tokenizer_config.json": "525f6e8d34ebdd9a6b6de867afc5c070169ddec58e5058e93134e18ff2e9ecfa",
+          "seed_20260503/vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c",
+          "seed_20260504/config.json": "f1bbd980124a0fc2c5a9af9ac18970b162169c1d401ca5b0e6224b201ac259ef",
+          "seed_20260504/model.safetensors": "c05e58cac2519a28b7da508e287cbffebcab49b2ada012622c92500b514adba9",
+          "seed_20260504/special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+          "seed_20260504/tokenizer.json": "3c4ee679d4ab7ec61f5b6804d52fc523ed6cf252365c8636b178e1e71522be0a",
+          "seed_20260504/tokenizer_config.json": "525f6e8d34ebdd9a6b6de867afc5c070169ddec58e5058e93134e18ff2e9ecfa",
+          "seed_20260504/vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c",
+          "seed_20260505/config.json": "f1bbd980124a0fc2c5a9af9ac18970b162169c1d401ca5b0e6224b201ac259ef",
+          "seed_20260505/model.safetensors": "028b160cd3c1befa886d09b6c407b37014561815e60efdb6f30b8dff3ab2d0e9",
+          "seed_20260505/special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+          "seed_20260505/tokenizer.json": "3c4ee679d4ab7ec61f5b6804d52fc523ed6cf252365c8636b178e1e71522be0a",
+          "seed_20260505/tokenizer_config.json": "525f6e8d34ebdd9a6b6de867afc5c070169ddec58e5058e93134e18ff2e9ecfa",
+          "seed_20260505/vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+        },
+        "tree_sha256": "c8de885094c19d12ce2bcbd182b9d3596d1174bec0f4775f1a11b5d9d7dcb85b"
+      }
+    },
+    "fit_trec6": {
+      "a1_path": "<workspace>/5_Experiments_Simulations/rebaseline_rb_g1/runs/RB_G1_20261023_V1/fit_trec6__val_trec5/A1_TFIDF_LR/tfidf_lr.joblib",
+      "a1_seconds": 10.916253089904785,
+      "a1_sha256": "2b93b22d70d4399ef9c6a852478af6dbe8a217bdd71d5ae2df697af3ae9995ec",
+      "a2_dtype": "float32",
+      "a2_root": "<workspace>/5_Experiments_Simulations/rebaseline_rb_g1/runs/RB_G1_20261023_V1/fit_trec6__val_trec5/A2_MDISTILBERT",
+      "a2_seconds": 296.15284061431885,
+      "a2_tree": {
+        "files": {
+          "ensemble_validation.parquet": "9c6eb9779b98f4f8a1546e586287adca90ebf4cca161a439f884895caa1b34c3",
+          "seed_20260503/config.json": "f1bbd980124a0fc2c5a9af9ac18970b162169c1d401ca5b0e6224b201ac259ef",
+          "seed_20260503/model.safetensors": "f7008c0840c721781e09ecae56c02924020f4c33431dfc52bfa02020bc80896c",
+          "seed_20260503/special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+          "seed_20260503/tokenizer.json": "3c4ee679d4ab7ec61f5b6804d52fc523ed6cf252365c8636b178e1e71522be0a",
+          "seed_20260503/tokenizer_config.json": "525f6e8d34ebdd9a6b6de867afc5c070169ddec58e5058e93134e18ff2e9ecfa",
+          "seed_20260503/vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c",
+          "seed_20260504/config.json": "f1bbd980124a0fc2c5a9af9ac18970b162169c1d401ca5b0e6224b201ac259ef",
+          "seed_20260504/model.safetensors": "cfbfd3e407196822061c88c4e259bd345dd512cbff926ad2bdc1b3e5210a0fc4",
+          "seed_20260504/special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+          "seed_20260504/tokenizer.json": "3c4ee679d4ab7ec61f5b6804d52fc523ed6cf252365c8636b178e1e71522be0a",
+          "seed_20260504/tokenizer_config.json": "525f6e8d34ebdd9a6b6de867afc5c070169ddec58e5058e93134e18ff2e9ecfa",
+          "seed_20260504/vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c",
+          "seed_20260505/config.json": "f1bbd980124a0fc2c5a9af9ac18970b162169c1d401ca5b0e6224b201ac259ef",
+          "seed_20260505/model.safetensors": "226966376ac45274521048a639b2eb9d8eb9538b26630de7bad33e26022e4860",
+          "seed_20260505/special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+          "seed_20260505/tokenizer.json": "3c4ee679d4ab7ec61f5b6804d52fc523ed6cf252365c8636b178e1e71522be0a",
+          "seed_20260505/tokenizer_config.json": "525f6e8d34ebdd9a6b6de867afc5c070169ddec58e5058e93134e18ff2e9ecfa",
+          "seed_20260505/vocab.txt": "fe0fda7c425b48c516fc8f160d594c8022a0808447475c1a7c6d6479763f310c"
+        },
+        "tree_sha256": "7567f83d4cfffecf9e50a634286dc717741a44b1ace46389d674dc3fd3c5d37b"
+      }
+    }
+  },
+  "rows": 38920,
+  "runtime": {
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 3090",
+    "numpy": "2.3.5",
+    "pandas": "3.0.3",
+    "python": "3.12.10",
+    "sklearn": "1.7.2",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.57.6"
+  },
+  "runtime_compatibility": {
+    "routes": {
+      "fit_trec5": {
+        "a1_exact_count": 128,
+        "a1_max_abs_diff": 0.0,
+        "a2_exact_count": 127,
+        "a2_max_abs_diff": 1.4551915228366852e-11,
+        "rows": 128
+      },
+      "fit_trec6": {
+        "a1_exact_count": 128,
+        "a1_max_abs_diff": 0.0,
+        "a2_exact_count": 128,
+        "a2_max_abs_diff": 0.0,
+        "rows": 128
+      }
+    },
+    "sample_rule": "64 deterministic evenly spaced rows per class per validation source",
+    "status": "PASS"
+  },
+  "schema": "P8_CEAS08_SCORING_MODELS_V1",
+  "split_sha256": "d1b05d544f92e176365efc89451201bee0e7d5b7f918f20fa29c07d5dbc85a63",
+  "started_local": "2026-11-06 15:42:15",
+  "started_unix": 1794001335.3963215,
+  "study_id": "P8-IJIS-E2-20261106",
+  "wall_seconds": 929.5206596851349
+}

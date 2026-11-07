@@ -4,6 +4,8 @@ Companion code, frozen experimental protocols, and verification suite for the ma
 
 > **Ranking Transportability, Common-Threshold Compatibility, and Residual Structural Utility in Email Threat Detection: A Cross-Corpus Measurement Study**
 
+The extended version of the study, **A Good Ranking Is Not a Transferable Cutoff: Source Dependence of False-Positive Control in Email Filters**, adds CEAS-08 external scoring and a label-budget analysis of restoring a false-positive budget on a new stream. Its code, frozen score files, label-only tables, and result tables are in [`ijis_extension/`](ijis_extension/README.md).
+
 ## Overview
 
 Cross-corpus email threat detection benchmarks frequently conflate ranking discrimination (`AUPRC`) with fixed-threshold operating compatibility (`Recall@FPR <= 1%`). This repository provides the three-stage measurement framework and frozen evaluation artifacts used to audit:

@@ -1,0 +1,21 @@
+{
+  "ijis_e1e2_20261106/data/ceas08_confirmation.parquet": {
+    "columns": [
+      "row_id",
+      "label",
+      "canonical_hash",
+      "contamination_removed"
+    ],
+    "derived_from_sha256": "e82859712079f60fc13e9ba57c932451d1333b53cac553e6ae0b9ced1d905a6b",
+    "rows": 38963
+  },
+  "top_q1_external_confirmation_20261105/data/spaphish_confirmation.parquet": {
+    "columns": [
+      "row_id",
+      "label",
+      "canonical_hash"
+    ],
+    "derived_from_sha256": "f77d8a15d56bee1ad03abf5d21f42ee286cf0b7f6eca62fd92f269414038a978",
+    "rows": 1395
+  }
+}

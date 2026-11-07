@@ -1,0 +1,17 @@
+{
+  "fit_sources": [
+    "trec5",
+    "trec6"
+  ],
+  "fold_fit_receipt_sha256": "ccfb1d7463b7c7b3e4b2f2e5f46eecee2ee645d5dfed572d9627dd8e34dcfa93",
+  "freeze_sha256": "2413e70ddd5e3d15bb5c654435dc9fc6b4cb9c5d873dc955db7925e464c9fca7",
+  "locked_thresholds": {
+    "A1_TFIDF_LR": 0.8367079295539985,
+    "A2_MDISTILBERT": 0.9996199607849122
+  },
+  "schema": "PHISHKAN_RB_G1_FINAL_FIT_V1",
+  "script_sha256": "7240d6a8ef6fef7e623e9cb64ce4e45f899de54e66b5a0b911270f7113014e18",
+  "spaPhish_accessed": false,
+  "status": "FINAL_MODELS_FROZEN",
+  "trec7_accessed": false
+}

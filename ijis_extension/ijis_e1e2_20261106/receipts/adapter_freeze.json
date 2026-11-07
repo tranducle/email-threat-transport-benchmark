@@ -1,0 +1,77 @@
+{
+  "adapter_path": "<workspace>/5_Experiments_Simulations/ijis_e1e2_20261106/data/ceas08_confirmation.parquet",
+  "adapter_rule_source": "historical development adapter preprocess_email_data.normalize_dataset: empty-text removal, conflicting-label hash groups removed, exact duplicates removed keeping first",
+  "adapter_sha256": "e82859712079f60fc13e9ba57c932451d1333b53cac553e6ae0b9ced1d905a6b",
+  "dropped_conflicting_label_rows": 0,
+  "dropped_empty_text": 0,
+  "dropped_internal_exact_duplicates": 191,
+  "evaluation_label_counts": {
+    "0": 17246,
+    "1": 21674
+  },
+  "evaluation_rows": 38920,
+  "exact_hash_overlap_with_raw_trec5_trec6": 1,
+  "frozen_local_time": "2026-11-06 15:41:41",
+  "label_use_before_scoring": "label checked only for completeness and class counts (and the development adapter conflicting-label check, which removed the rows counted above); no label used for model fitting, threshold selection, calibration, seed selection, subgroup definition, or feature selection",
+  "metadata_path": "<workspace>/DATASET/metadata/zenodo_8339691.json",
+  "metadata_sha256": "be877b311844c6ae70f4ff3093efc942704e50b24d50f225391325bfd162bebf",
+  "model_stack_imported_before_freeze": false,
+  "near_duplicate_count_ge_0_95": 43,
+  "near_duplicate_count_ge_0_99": 15,
+  "near_duplicate_similarity_threshold": 0.95,
+  "nearest_similarity_max": 1.0,
+  "nearest_similarity_median": 0.33495185694863916,
+  "nearest_similarity_p99": 0.8600403521680425,
+  "normalization": "subject plus body, NUL to space, whitespace collapse, trim; lowercase only for canonical hash",
+  "provenance_record": {
+    "doi": "10.5281/zenodo.8339691",
+    "expected_md5": "1f0d59191eec892a709995d48cd8decb",
+    "expected_size": 67902056,
+    "license": "cc-by-4.0",
+    "zenodo_record": 8339691
+  },
+  "raw_trec_rows_screened": 64588,
+  "raw_trec_source_counts": {
+    "trec5": 49583,
+    "trec6": 15005
+  },
+  "removed_exact_or_near": 43,
+  "removed_label_counts": {
+    "0": 43
+  },
+  "removed_share": 0.001103611118240382,
+  "rows_after_adapter": 38963,
+  "schema": "P8_CEAS08_ADAPTER_FREEZE_V1",
+  "screen_wall_seconds": 133.99193692207336,
+  "source_columns": [
+    "sender",
+    "receiver",
+    "date",
+    "subject",
+    "body",
+    "label",
+    "urls"
+  ],
+  "source_label_counts": {
+    "0": 17312,
+    "1": 21842
+  },
+  "source_md5": "1f0d59191eec892a709995d48cd8decb",
+  "source_path": "<workspace>/DATASET/raw/CEAS_08.csv",
+  "source_rows": 39154,
+  "source_sha256": "22375e7d5f5a8229dbe987914ee9b3705656c590038662a7df6054629b376074",
+  "source_size": 67902056,
+  "split_path": "<workspace>/5_Experiments_Simulations/ijis_e1e2_20261106/data/ceas08_confirmation_split.csv",
+  "split_sha256": "d1b05d544f92e176365efc89451201bee0e7d5b7f918f20fa29c07d5dbc85a63",
+  "status": "FROZEN_BEFORE_MODEL_SCORING",
+  "study_id": "P8-IJIS-E2-20261106",
+  "url_field_distinct_values": [
+    0,
+    1
+  ],
+  "url_residual_test": {
+    "reason": "CEAS-08 `urls` field holds a 0/1 indicator only (distinct values [0, 1]); URL count, length and subdomain features cannot be rebuilt from it, so the seven-feature URL block cannot be reconstructed faithfully with the E-FIX parser.",
+    "testable": false
+  },
+  "url_safety": "URLs never parsed, resolved or fetched"
+}
