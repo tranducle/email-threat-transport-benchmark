@@ -39,6 +39,10 @@ extension/
     code/r2_analyses.py   shared versus same-model cutoffs, score ceilings, mean realized FPR,
                           full-label recall reference, analytic label requirement
     results/              r2_results.json and the two long tables it summarizes
+    code/r3_cell_fpr_intervals.py   exact 95% Clopper-Pearson intervals for the realized FPR of
+                          every frozen external cell, from the false-positive counts in
+                          r2_results.json
+    results/r3_cell_fpr_intervals.json
   LABEL_ONLY_DERIVATION.json   source hash, kept columns, and row count of each label-only table
   SHA256SUMS.txt               SHA-256 of every file in this folder
 ```
@@ -63,6 +67,7 @@ python ijis_e1e2_20261106/code/e1_label_budget.py    # E1, CPU only, under a min
 python ijis_e1e2_20261106/code/e1_tables.py          # E1 tables from the long results file
 python ijis_e1e2_20261106/code/e2_ceas08.py analyze  # E2 metrics and paired bootstrap from frozen scores
 python ijis_r2_review_analyses_20261106/code/r2_analyses.py  # cutoff policies and label rule (needs e1_draws.parquet)
+python ijis_r2_review_analyses_20261106/code/r3_cell_fpr_intervals.py ijis_r2_review_analyses_20261106/results/r2_results.json ijis_r2_review_analyses_20261106/results/r3_cell_fpr_intervals.json  # exact FPR intervals
 ```
 
 `r2_analyses.py` reads the same score and label files plus the per-draw file `e1_draws.parquet`

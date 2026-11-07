@@ -1,0 +1,299 @@
+{
+ "source": "r2_results.json",
+ "alpha": 0.01,
+ "no_model_run": true,
+ "rows": [
+  {
+   "corpus": "spaphish",
+   "route": "final",
+   "model": "a1",
+   "policy": "common",
+   "fp": 446,
+   "n0": 664,
+   "fpr": 0.6716867469879518,
+   "ci95": [
+    0.6345116457472004,
+    0.7073270967377812
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "spaphish",
+   "route": "final",
+   "model": "a2",
+   "policy": "common",
+   "fp": 182,
+   "n0": 664,
+   "fpr": 0.2740963855421687,
+   "ci95": [
+    0.24048330322215092,
+    0.3097316993305673
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "spaphish",
+   "route": "fit_trec5",
+   "model": "a1",
+   "policy": "common",
+   "fp": 543,
+   "n0": 664,
+   "fpr": 0.8177710843373494,
+   "ci95": [
+    0.7862648039723926,
+    0.8464204895939147
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "spaphish",
+   "route": "fit_trec5",
+   "model": "a1",
+   "policy": "own",
+   "fp": 543,
+   "n0": 664,
+   "fpr": 0.8177710843373494,
+   "ci95": [
+    0.7862648039723926,
+    0.8464204895939147
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "spaphish",
+   "route": "fit_trec5",
+   "model": "a2",
+   "policy": "common",
+   "fp": 167,
+   "n0": 664,
+   "fpr": 0.25150602409638556,
+   "ci95": [
+    0.21891752498668757,
+    0.286320713533955
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "spaphish",
+   "route": "fit_trec5",
+   "model": "a2",
+   "policy": "own",
+   "fp": 167,
+   "n0": 664,
+   "fpr": 0.25150602409638556,
+   "ci95": [
+    0.21891752498668757,
+    0.286320713533955
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "spaphish",
+   "route": "fit_trec6",
+   "model": "a1",
+   "policy": "common",
+   "fp": 203,
+   "n0": 664,
+   "fpr": 0.3057228915662651,
+   "ci95": [
+    0.27085722880128205,
+    0.3423261341141125
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "spaphish",
+   "route": "fit_trec6",
+   "model": "a1",
+   "policy": "own",
+   "fp": 237,
+   "n0": 664,
+   "fpr": 0.3569277108433735,
+   "ci95": [
+    0.3204398203432606,
+    0.39469388921048976
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "spaphish",
+   "route": "fit_trec6",
+   "model": "a2",
+   "policy": "common",
+   "fp": 0,
+   "n0": 664,
+   "fpr": 0.0,
+   "ci95": [
+    null,
+    null
+   ],
+   "verdict": "flags nothing"
+  },
+  {
+   "corpus": "spaphish",
+   "route": "fit_trec6",
+   "model": "a2",
+   "policy": "own",
+   "fp": 89,
+   "n0": 664,
+   "fpr": 0.13403614457831325,
+   "ci95": [
+    0.10904308733131499,
+    0.16233324955501233
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "ceas08",
+   "route": "final",
+   "model": "a1",
+   "policy": "common",
+   "fp": 373,
+   "n0": 17246,
+   "fpr": 0.0216282036414241,
+   "ci95": [
+    0.019509141937726165,
+    0.023910640947103587
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "ceas08",
+   "route": "final",
+   "model": "a2",
+   "policy": "common",
+   "fp": 103,
+   "n0": 17246,
+   "fpr": 0.005972399396961614,
+   "ci95": [
+    0.004877404569260566,
+    0.007238663856203215
+   ],
+   "verdict": "clearly keeps"
+  },
+  {
+   "corpus": "ceas08",
+   "route": "fit_trec5",
+   "model": "a1",
+   "policy": "common",
+   "fp": 431,
+   "n0": 17246,
+   "fpr": 0.0249913023309753,
+   "ci95": [
+    0.02271297178723296,
+    0.027431670382124157
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "ceas08",
+   "route": "fit_trec5",
+   "model": "a1",
+   "policy": "own",
+   "fp": 431,
+   "n0": 17246,
+   "fpr": 0.0249913023309753,
+   "ci95": [
+    0.02271297178723296,
+    0.027431670382124157
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "ceas08",
+   "route": "fit_trec5",
+   "model": "a2",
+   "policy": "common",
+   "fp": 332,
+   "n0": 17246,
+   "fpr": 0.019250840774672387,
+   "ci95": [
+    0.017252502922387933,
+    0.021413531172950716
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "ceas08",
+   "route": "fit_trec5",
+   "model": "a2",
+   "policy": "own",
+   "fp": 332,
+   "n0": 17246,
+   "fpr": 0.019250840774672387,
+   "ci95": [
+    0.017252502922387933,
+    0.021413531172950716
+   ],
+   "verdict": "clearly exceeds"
+  },
+  {
+   "corpus": "ceas08",
+   "route": "fit_trec6",
+   "model": "a1",
+   "policy": "common",
+   "fp": 180,
+   "n0": 17246,
+   "fpr": 0.010437202829641655,
+   "ci95": [
+    0.008974450249448372,
+    0.012068384497133091
+   ],
+   "verdict": "within sampling error"
+  },
+  {
+   "corpus": "ceas08",
+   "route": "fit_trec6",
+   "model": "a1",
+   "policy": "own",
+   "fp": 192,
+   "n0": 17246,
+   "fpr": 0.011133016351617767,
+   "ci95": [
+    0.009620936585214172,
+    0.012813158084119623
+   ],
+   "verdict": "within sampling error"
+  },
+  {
+   "corpus": "ceas08",
+   "route": "fit_trec6",
+   "model": "a2",
+   "policy": "common",
+   "fp": 0,
+   "n0": 17246,
+   "fpr": 0.0,
+   "ci95": [
+    null,
+    null
+   ],
+   "verdict": "flags nothing"
+  },
+  {
+   "corpus": "ceas08",
+   "route": "fit_trec6",
+   "model": "a2",
+   "policy": "own",
+   "fp": 154,
+   "n0": 17246,
+   "fpr": 0.008929606865360084,
+   "ci95": [
+    0.007579900387350281,
+    0.010448588607413292
+   ],
+   "verdict": "within sampling error"
+  }
+ ],
+ "tally": {
+  "common": {
+   "clearly exceeds": 8,
+   "flags nothing": 2,
+   "clearly keeps": 1,
+   "within sampling error": 1
+  },
+  "own": {
+   "clearly exceeds": 6,
+   "within sampling error": 2
+  }
+ }
+}
