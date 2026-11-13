@@ -12,3 +12,5 @@ outputs/
 *.pth
 *.joblib
 .DS_Store
+# model checkpoints written outside the data root
+models/

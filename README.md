@@ -4,7 +4,22 @@ Companion code, frozen experimental protocols, and verification suite for the ma
 
 > **Ranking Transportability, Common-Threshold Compatibility, and Residual Structural Utility in Email Threat Detection: A Cross-Corpus Measurement Study**
 
-The extended version of the study, **A Good Ranking Is Not a Transferable Cutoff: False-Positive Control of Email Filters Across Sources and Retraining**, adds CEAS-08 external scoring, a label-budget analysis of restoring a false-positive budget on a new stream, and a comparison of shared and same-model cutoffs. Its code, frozen score files, label-only tables, and result tables are in [`extension/`](extension/README.md).
+The repository also holds two follow-up studies:
+
+- [`threshold_transport/`](threshold_transport/README.md): code for **A Good Ranking Is Not a Transferable Cutoff: Multi-Family False-Positive Control of Email Filters Across Sources, Priors, and Time**. It covers six classifiers from three model families, prior-shift recalibration, Clopper-Pearson certified cutoffs, forward chronological certification on SpaPhish v5 and a sender-domain cluster bootstrap on CEAS-08. The pinned environment is [`environment.lock.json`](environment.lock.json).
+- [`extension/`](extension/README.md): an earlier version of that study (CEAS-08 external scoring, a label-budget analysis, shared versus same-model cutoffs), with frozen score files, label-only tables and result tables.
+
+## Datasets
+
+No email text is stored in this repository. All corpora are public; download them from the records below.
+
+| Corpus | Used by | Record | License |
+| :- | :- | :- | :- |
+| MeAJOR (TREC 2005, 2006 and 2007 public spam corpora, merged and preprocessed) | both studies | Zenodo, version 2.0, DOI [10.5281/zenodo.18471483](https://doi.org/10.5281/zenodo.18471483) | CC BY 4.0 |
+| SpaPhish v5 (Spanish phishing and legitimate email) | `threshold_transport/` | Mendeley Data, DOI [10.17632/hz2d6gz7pc.5](https://doi.org/10.17632/hz2d6gz7pc.5) | CC BY 4.0 |
+| CEAS-08 (from "Phishing Email Curated Datasets") | `threshold_transport/`, `extension/` | Zenodo, DOI [10.5281/zenodo.8339691](https://doi.org/10.5281/zenodo.8339691) | CC BY 4.0 |
+
+The TREC corpora inside MeAJOR come from the TREC 2005 and 2006 Spam Tracks ([2005 overview](https://trec.nist.gov/pubs/trec14/papers/SPAM.OVERVIEW.pdf), [2006 overview](https://trec.nist.gov/pubs/trec15/papers/SPAM06.OVERVIEW.pdf)). File names, sizes, checksums and the expected local layout are in [DATA.md](DATA.md).
 
 ## Overview
 
@@ -52,8 +67,10 @@ email-threat-transport-benchmark/
 │   └── test_protocol_invariants.py        # Automated test suite
 ├── docs/
 │   └── PROTOCOL_NOTES.md                  # Source quarantine rules and calibration details
-└── extension/                             # Extended study: CEAS-08 scoring, label budget,
-                                           # shared versus same-model cutoffs (see its README)
+├── extension/                             # Earlier follow-up: CEAS-08 scoring, label budget,
+│                                          # shared versus same-model cutoffs (see its README)
+├── threshold_transport/                   # Multi-family threshold transport study (see its README)
+└── environment.lock.json                  # Pinned environment of the threshold transport runs
 ```
 
 ## Quick Verification (No Dataset Download Required)
@@ -70,3 +87,7 @@ python experiments/uncertainty_analysis.py --verify-frozen
 ```
 
 See [DATA.md](DATA.md) and [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for full retraining instructions on the public MeAJOR benchmark.
+
+## Threshold transport study
+
+The `threshold_transport/` folder holds the code for the manuscript "A Good Ranking Is Not a Transferable Cutoff: Multi-Family False-Positive Control of Email Filters Across Sources, Priors, and Time": deterministic preprocessing, anchor and multi-family training, prior-shift recalibration, chronological certification and the sender-domain cluster bootstrap. The pinned environment of those runs is `environment.lock.json` at the repository root. Data sources, data layout, run order and the mapping from scripts to tables are in [threshold_transport/README.md](threshold_transport/README.md).

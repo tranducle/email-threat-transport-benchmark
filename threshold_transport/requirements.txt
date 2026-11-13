@@ -1,0 +1,10 @@
+# Versions of the original runs (Python 3.12.10); full environment in ../environment.lock.json.
+# torch must be a CUDA build for A2 training and scoring (original: 2.6.0+cu124).
+joblib==1.5.3
+numpy==2.3.5
+pandas==3.0.3
+pyarrow==23.0.1
+scikit-learn==1.7.2
+scipy==1.17.1
+torch==2.6.0
+transformers==4.57.6

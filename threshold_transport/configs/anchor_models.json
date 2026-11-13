@@ -1,0 +1,55 @@
+{
+  "development_data": {
+    "corpus": "MeAJOR",
+    "source_folds": [
+      {
+        "fit_source": "trec5",
+        "validation_source": "trec6"
+      },
+      {
+        "fit_source": "trec6",
+        "validation_source": "trec5"
+      }
+    ]
+  },
+  "anchors": [
+    {
+      "id": "A1_TFIDF_LR",
+      "vectorizer": {
+        "type": "TfidfVectorizer",
+        "max_features": 20000,
+        "min_df": 2,
+        "ngram_range": [
+          1,
+          2
+        ],
+        "lowercase": true,
+        "strip_accents": "unicode",
+        "sublinear_tf": true
+      },
+      "classifier": {
+        "type": "LogisticRegression",
+        "C": 1.0,
+        "class_weight": "balanced",
+        "solver": "liblinear",
+        "max_iter": 1000
+      }
+    },
+    {
+      "id": "A2_MDISTILBERT",
+      "model_name": "distilbert-base-multilingual-cased",
+      "max_length": 192,
+      "epochs": 3,
+      "batch_size": 16,
+      "learning_rate": 2E-05,
+      "optimizer": "AdamW",
+      "warmup_fraction": 0.1,
+      "gradient_clip_norm": 1.0,
+      "seeds": [
+        20260503,
+        20260504,
+        20260505
+      ]
+    }
+  ]
+}
