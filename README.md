@@ -6,7 +6,7 @@ Companion code, frozen experimental protocols, and verification suite for the ma
 
 The repository also holds two follow-up studies:
 
-- [`threshold_transport/`](threshold_transport/README.md): code for **A Good Ranking Is Not a Transferable Cutoff: Multi-Family False-Positive Control of Email Filters Across Sources, Priors, and Time**. It covers six classifiers from three model families, prior-shift recalibration, Clopper-Pearson certified cutoffs, forward chronological certification on SpaPhish v5 and a sender-domain cluster bootstrap on CEAS-08. The pinned environment is [`environment.lock.json`](environment.lock.json).
+- [`threshold_transport/`](threshold_transport/README.md): code for **A Good Ranking Is Not a Transferable Cutoff: False-Positive Control of Spam and Phishing Filters Under Dataset Shift**. It covers six classifiers from three model families, prior-shift recalibration, Clopper-Pearson certified cutoffs, forward chronological certification on SpaPhish v5 and a sender-domain cluster bootstrap on CEAS-08. The pinned environment is [`environment.lock.json`](environment.lock.json).
 - [`extension/`](extension/README.md): an earlier version of that study (CEAS-08 external scoring, a label-budget analysis, shared versus same-model cutoffs), with frozen score files, label-only tables and result tables.
 
 ## Datasets
@@ -90,4 +90,4 @@ See [DATA.md](DATA.md) and [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for full ret
 
 ## Threshold transport study
 
-The `threshold_transport/` folder holds the code for the manuscript "A Good Ranking Is Not a Transferable Cutoff: Multi-Family False-Positive Control of Email Filters Across Sources, Priors, and Time": deterministic preprocessing, anchor and multi-family training, prior-shift recalibration, chronological certification and the sender-domain cluster bootstrap. The pinned environment of those runs is `environment.lock.json` at the repository root. Data sources, data layout, run order and the mapping from scripts to tables are in [threshold_transport/README.md](threshold_transport/README.md).
+The `threshold_transport/` folder holds the code for the manuscript "A Good Ranking Is Not a Transferable Cutoff: False-Positive Control of Spam and Phishing Filters Under Dataset Shift": deterministic preprocessing, anchor and multi-family training, prior-shift recalibration, chronological certification and the sender-domain cluster bootstrap. The pinned environment of those runs is `environment.lock.json` at the repository root. Data sources, data layout, run order and the mapping from scripts to tables are in [threshold_transport/README.md](threshold_transport/README.md).
