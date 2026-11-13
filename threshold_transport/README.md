@@ -2,8 +2,6 @@
 
 This folder contains the code for the manuscript "A Good Ranking Is Not a Transferable Cutoff: False-Positive Control of Spam and Phishing Filters Under Dataset Shift". The study fixes a decision cutoff on two development sources (TREC5 and TREC6 from the MeAJOR collection) at a target false-positive rate, freezes it, and measures what happens to that cutoff on SpaPhish v5 and CEAS-08, under prior shift, and forward in time. It covers six classifiers in three model families, threshold policies that use increasing amounts of target information (from the frozen development cutoff to prior-shift recalibration and a Clopper-Pearson certified cutoff), exchangeable label-budget simulations, forward chronological certification on SpaPhish, a sender-domain cluster bootstrap on CEAS-08, and cross-fitted residual probes over the mDistilBERT scores.
 
-The rest of this repository belongs to an earlier study and is not needed here.
-
 ## Requirements
 
 Python 3.12 with the versions in `requirements.txt` in this folder. The full environment of the original runs (all installed packages, GPU, CUDA and platform) is in `environment.lock.json` at the repository root.

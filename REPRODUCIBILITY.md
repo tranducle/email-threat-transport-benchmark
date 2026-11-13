@@ -1,33 +1,43 @@
-# Reproducibility Guide (`REPRODUCIBILITY.md`)
+# Reproducibility
 
-## 1. Environment Setup
+## Environment
+
+The original runs used Python 3.12.10 on one NVIDIA GeForce RTX 3090 (24 GB, CUDA 12.4) under Windows 11. `requirements.txt` installs the pinned package versions; `environment.lock.json` records the full environment (all installed packages, GPU, CUDA and platform).
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## 2. Tier 1: Deterministic Verification of Published Claims (CPU, < 10 seconds)
+`torch` must be a CUDA build for the DistilBERT steps (the original runs used `torch 2.6.0+cu124`). The first DistilBERT run downloads `distilbert-base-multilingual-cased` from the Hugging Face Hub.
 
-This tier verifies the mathematical invariants, threshold selection rules, feature block schemas, and every number reported in Tables I, II, III and Figures 2 and 3 of the manuscript:
+## Checks without data
 
 ```bash
-pytest -q
-python scripts/verify_published_results.py
-python experiments/semantic_anchor_study.py --verify-frozen
-python experiments/residual_utility_study.py --verify-frozen
-python experiments/uncertainty_analysis.py --verify-frozen
+python -m unittest discover -s threshold_transport/tests
 ```
 
-## 3. Tier 2: Full Cross-Corpus Retraining from MeAJOR Preprocessed Data
+The three experiment scripts also accept `--smoke` for a short run; the smoke run of `prior_shift_and_seed_ceilings.py` needs CUDA.
 
-1. Place `data/meajor_preprocessed.parquet` following [DATA.md](DATA.md) and verify partition counts:
-   ```bash
-   python scripts/prepare_meajor_corpus.py --data-path data/meajor_preprocessed.parquet
-   ```
-2. Run the Stage 1 lexical anchor reciprocal folds (`fit_trec5__val_trec6` and `fit_trec6__val_trec5`):
-   ```bash
-   python experiments/semantic_anchor_study.py --data-path data/meajor_preprocessed.parquet --output-dir outputs/stage1
-   ```
-3. Frozen protocol hyperparameters for `A2_MDISTILBERT` (`distilbert-base-multilingual-cased`, `max_length = 192`, `epochs = 3`, `batch_size = 16`, `lr = 2e-5`, `seeds = [20260503, 20260504, 20260505]`) and Stage 2 residual ridge probes (`alpha = 1.0`, `coefficient_grid = [0.0, 0.25, 0.5, 1.0]`, `selection_seed = 20261025`) are locked in `configs/semantic_anchor_protocol.json` and `configs/residual_utility_protocol.json`.
+## Full run
+
+Place the corpora as described in [DATA.md](DATA.md), then run from the repository root in this order. The exact commands, the flags of each step and the output files are in [threshold_transport/README.md](threshold_transport/README.md#run-order).
+
+| Step | Script | Hardware | Time on the original machine |
+| :- | :- | :- | :- |
+| 1 | `preprocessing/build_trec_development_set.py` | CPU | under a minute |
+| 2 | `training/train_anchor_models.py` (`audit`, `fit-folds`, `final-fit`) | GPU for DistilBERT | |
+| 3 | `training/crossfit_anchor_scores.py` (`crossfit`, optional `residual-fit`) | GPU | |
+| 4 | `preprocessing/build_trec_development_set.py` again (checks row order and labels against the cross-fitted scores) | CPU | under a minute |
+| 5 | `external_corpora/spaphish_adapter_and_scoring.py`, `rebuild_spaphish_url_features.py`, `ceas08_adapter_and_scoring.py` (`prepare`, then `score`) | CPU, then GPU | |
+| 6 | `training/time_anchor_training.py` | GPU | about 45 min |
+| 7 | `experiments/prior_shift_and_seed_ceilings.py` | GPU | about 14 min |
+| 7 | `experiments/multifamily_training_and_probes.py` | GPU | about 60 min |
+| 7 | `experiments/chronological_and_cluster_certification.py` | CPU | about 20 min |
+
+## Determinism
+
+cuDNN runs in deterministic mode, and the scripts write JSON receipts with SHA-256 digests of their inputs and outputs under `results/receipts/` in the data root. Retraining the balanced logistic regression anchor (A1) reproduces the saved model exactly, and rescoring saved DistilBERT checkpoints reproduces the saved ensemble scores to within 1e-5. Retraining DistilBERT with the same seeds on the same GPU does not: the ensemble scores differed from the saved ones by 0.0008 on average and by up to 0.31 on 512 development messages. The DistilBERT numbers in the manuscript come from the saved checkpoints.
+
+Seeds and fixed settings are listed in [threshold_transport/README.md](threshold_transport/README.md#seeds-and-fixed-settings).
